@@ -9,7 +9,7 @@ HF_TOKEN = os.getenv("HF_TOKEN")
 
 # Initialize client with a Hugging Face chat-capable model
 client = InferenceClient(
-    model="mistralai/Mistral-7B-Instruct-v0.2",
+    model="mistralai/Mistral-7B-Instruct-v0.3",
     token=HF_TOKEN
 )
 
