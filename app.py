@@ -3,10 +3,11 @@ from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
 import os
 
+# Load your Hugging Face token
 load_dotenv()
-
 HF_TOKEN = os.getenv("HF_TOKEN")
 
+# Initialize client with a Hugging Face chat-capable model
 client = InferenceClient(
     model="mistralai/Mistral-7B-Instruct-v0.2",
     token=HF_TOKEN
@@ -37,13 +38,14 @@ Tasks:
 3. Suggest ways to better match the job
 """
 
-    response = client.chat.completions.create(
+    # ✅ Correct call for HF chat-capable model
+    response = client.chat(
         messages=[{"role": "user", "content": prompt}],
-        max_tokens=400
+        max_new_tokens=400
     )
 
-    return response.choices[0].message.content
-
+    # The API returns text directly
+    return response["choices"][0]["message"]["content"]
 
 if st.button("Analyze Resume"):
 
