@@ -40,7 +40,7 @@ Tasks:
 
     response = client.chat_completion(
         messages=[{"role": "user", "content": prompt}],
-        max_new_tokens=400
+        max_tokens=500
     )
 
     return response.choices[0].message.content
